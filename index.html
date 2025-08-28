@@ -23,34 +23,15 @@
             overflow: hidden;
         }
 
-        /* Header now has a background layer we animate, text stays stable */
-        .header {
-            position: relative;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            overflow: hidden;
-        }
-        .header-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            z-index: 0;
-            will-change: filter;
-        }
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            /* Title brightness will be set in JS to match IDLE_BRIGHTNESS */
-        }
+        /* Header */
+        .header { position: relative; color: white; padding: 30px; text-align: center; overflow: hidden; }
+        .header-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #4CAF50, #45a049); z-index: 0; will-change: filter; }
+        .header-content { position: relative; z-index: 1; }
+        .header h1 { font-size: 2.5em; margin-bottom: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
         .main-content { padding: 30px; }
 
+        /* Time input */
         .time-input {
             background: #f8f9fa;
             padding: 20px;
@@ -58,159 +39,111 @@
             margin-bottom: 20px;
             border: 2px solid #e9ecef;
         }
-
-	.time-input h3 {
-		color: #333;
-		margin-bottom: 15px;
-		font-size: 1.3em;
-		text-align: center; /* centers the heading only */
-	}
-
-        .time-controls {
-            display: flex; gap: 15px; flex-wrap: wrap; align-items: center;
-        }
-
+        .time-input h3 { color: #333; margin-bottom: 15px; font-size: 1.3em; text-align: center; }
+        .time-controls { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; justify-content: center; }
         .time-group { display: flex; flex-direction: column; align-items: center; }
         .time-group label { font-weight: 600; margin-bottom: 5px; color: #555; }
         .time-group input {
-            width: 80px; padding: 8px; border: 2px solid #ddd; border-radius: 8px;
+            width: 90px; padding: 8px; border: 2px solid #ddd; border-radius: 8px;
             text-align: center; font-size: 16px; transition: border-color 0.3s ease;
         }
-        .time-group input:focus {
-            outline: none; border-color: #4CAF50;
-            box-shadow: 0 0 0 3px rgba(76,175,80,0.1);
-        }
+        .time-group input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
 
+        /* Highscores fetch */
         .highscores-fetch {
             background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-            padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #e1bee7;
+            padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #e1bee7;
         }
-        .highscores-fetch h3 {
-            color: #333; margin-bottom: 15px; font-size: 1.3em;
-        }
-
-        .fetch-controls {
-            display: flex; gap: 15px; flex-wrap: wrap; align-items: center;
-        }
+        .highscores-fetch h3 { color: #333; margin-bottom: 15px; font-size: 1.3em; }
+        .fetch-controls { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
         .fetch-controls .input-group { flex: 1; min-width: 250px; }
         .fetch-controls .input-group input {
             width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;
             font-size: 16px; transition: border-color 0.3s ease;
         }
-        .fetch-controls .input-group input:focus {
-            outline: none; border-color: #9C27B0;
-            box-shadow: 0 0 0 3px rgba(156,39,176,0.1);
-        }
-
+        .fetch-controls .input-group input:focus { outline: none; border-color: #9C27B0; box-shadow: 0 0 0 3px rgba(156,39,176,0.1); }
         #fetchButton {
             background: linear-gradient(135deg, #9C27B0, #7B1FA2);
             color: white; border: none; padding: 12px 24px; border-radius: 8px;
             font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(156,39,176,0.3);
         }
-        #fetchButton:hover {
-            background: linear-gradient(135deg, #7B1FA2, #4A148C);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(156,39,176,0.4);
-        }
+        #fetchButton:hover { background: linear-gradient(135deg, #7B1FA2, #4A148C); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(156,39,176,0.4); }
         #fetchButton:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
-
         .fetch-status { font-size: 0.9em; font-weight: 600; padding: 8px 0; min-width: 150px; }
         .fetch-status.loading { color: #FF9800; }
         .fetch-status.success { color: #4CAF50; }
         .fetch-status.error { color: #F44336; }
 
-        /* Sailing toggle styling */
-        .toggle-row {
-            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-        }
+        /* Sailing toggle */
+        .toggle-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
         .toggle-row label { font-weight: 600; color: #333; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px; margin-bottom: 30px;
-        }
-
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px; }
         .skill-card {
             background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
             border: 1px solid rgba(255,255,255,0.4); border-radius: 15px; padding: 20px;
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.6),
-                inset 0 -1px 0 rgba(0,0,0,0.1),
-                0 8px 20px rgba(0,0,0,0.15);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease; position: relative; overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.15);
+            backdrop-filter: blur(12px); transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .skill-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
-            border-radius: 15px 15px 0 0;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.7),
-                inset 0 -1px 0 rgba(0,0,0,0.15),
-                0 12px 30px rgba(0,0,0,0.25);
-            border-color: rgba(76,175,80,0.6);
-        }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border-radius: 15px 15px 0 0; }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.15), 0 12px 30px rgba(0,0,0,0.25); border-color: rgba(76,175,80,0.6); }
         .skill-header, .skill-inputs, .efficiency-display { position: relative; z-index: 2; }
         .skill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .skill-name { font-size: 1.2em; font-weight: 700; color: #333; }
-        .eph-display {
-            background: #e3f2fd; padding: 5px 12px; border-radius: 20px;
-            font-size: 0.9em; color: #1976d2; font-weight: 600;
-        }
+        .eph-display { background: #e3f2fd; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; color: #1976d2; font-weight: 600; }
 
         .input-group { flex: 1; }
-        .input-group label {
-            display: block; margin-bottom: 5px; font-weight: 600; color: #555; font-size: 0.9em;
-        }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; font-size: 0.9em; }
         .input-group input {
             width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;
             font-size: 14px; transition: border-color 0.3s ease;
         }
-        .input-group input:focus {
-            outline: none; border-color: #4CAF50;
-            box-shadow: 0 0 0 3px rgba(76,175,80,0.1);
-        }
+        .input-group input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
 
         .efficiency-display {
             text-align: center; padding: 15px;
             background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%);
             border: 1px solid rgba(255,255,255,0.3); border-radius: 10px;
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.4),
-                inset 0 -1px 0 rgba(0,0,0,0.1),
-                0 4px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            position: relative; overflow: hidden;
-        }
-        .efficiency-display::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
-            border-radius: 10px 10px 0 0;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.1), 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px); position: relative; overflow: hidden;
         }
         .efficiency-value, .efficiency-label { position: relative; z-index: 2; }
         .efficiency-value { font-size: 1.8em; font-weight: 700; margin-bottom: 5px; }
         .efficiency-label { font-size: 0.9em; color: #666; font-weight: 500; }
 
+        /* CML panel */
+        .cml-panel {
+            background: #fffbe6;
+            border: 2px solid #ffecb5;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+        .cml-panel h3 { margin-bottom: 10px; text-align: center; }
+        .cml-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .cml-stat {
+            background: #ffffff;
+            border: 1px solid #f6e3a1;
+            border-radius: 12px;
+            padding: 12px 16px;
+            min-width: 140px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .cml-stat .label { display: block; font-size: 0.85em; color: #8d6e00; }
+        .cml-stat .value { display: block; font-size: 1.4em; font-weight: 700; color: #7a5e00; }
+
+        /* Overall results */
         .results {
             background: linear-gradient(135deg, rgba(102,126,234,0.9) 0%, rgba(118,75,162,0.9) 100%);
             border: 1px solid rgba(255,255,255,0.2); color: white; padding: 25px; border-radius: 15px;
-            margin-top: 30px; text-align: center;
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                inset 0 -1px 0 rgba(0,0,0,0.2),
-                0 8px 25px rgba(0,0,0,0.3);
-            backdrop-filter: blur(15px);
-            position: relative; overflow: hidden;
-        }
-        .results::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%);
-            border-radius: 15px 15px 0 0;
+            margin-top: 10px; text-align: center;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.2), 0 8px 25px rgba(0,0,0,0.3);
+            backdrop-filter: blur(15px); position: relative; overflow: hidden;
         }
         .results h2, .overall-efficiency, .results p { position: relative; z-index: 2; }
         .results h2 { margin-bottom: 20px; font-size: 2em; }
@@ -221,13 +154,11 @@
         .efficiency-poor { color: #FF9800; }
         .efficiency-very-poor { color: #F44336; }
 
-        .eph-reference {
-            background: #f8f9fa; padding: 25px; border-radius: 15px; margin-top: 30px; border: 2px solid #e9ecef;
-        }
+        /* EPH ref */
+        .eph-reference { background: #f8f9fa; padding: 25px; border-radius: 15px; margin-top: 20px; border: 2px solid #e9ecef; }
         .eph-reference h2 { color: #333; margin-bottom: 15px; text-align: center; font-size: 1.8em; }
         .eph-reference p { text-align: center; color: #666; margin-bottom: 25px; font-size: 1.1em; }
         .eph-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-
         .eph-item {
             background: white; padding: 15px; border-radius: 10px; border-left: 4px solid;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -241,454 +172,534 @@
         .footer { text-align: center; padding: 20px; color: #666; border-top: 1px solid #eee; margin-top: 20px; }
 
         @media (max-width: 768px) {
-            .time-controls { justify-content: center; }
             .skills-grid { grid-template-columns: 1fr; }
             .header h1 { font-size: 2em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-bg" aria-hidden="true"></div>
-            <div class="header-content">
-                <h1>🏆 OSRS True Efficiency Calculator</h1>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="time-input">
-                <h3>⏰ Total Time Played</h3>
-                <div class="time-controls">
-                    <div class="time-group">
-                        <label>Days</label>
-                        <input type="number" id="days" value="0" min="0" oninput="updateCalculations()">
-                    </div>
-                    <div class="time-group">
-                        <label>Hours</label>
-                        <input type="number" id="hours" value="0" min="0" max="23" oninput="updateCalculations()">
-                    </div>
-                    <div class="time-group">
-                        <label>Minutes</label>
-                        <input type="number" id="minutes" value="0" min="0" max="59" oninput="updateCalculations()">
-                    </div>
-                </div>
-            </div>
-
-            <div class="highscores-fetch">
-                <h3>📊 Fetch Stats from Highscores</h3>
-                <div class="fetch-controls">
-                    <div class="input-group">
-                        <input type="text" id="username" placeholder="Enter OSRS username to auto-fill XP values">
-                    </div>
-                    <button id="fetchButton" onclick="fetchHighscores()">Fetch Stats</button>
-                    <div id="fetchStatus" class="fetch-status"></div>
-
-                    <div class="toggle-row">
-                        <input type="checkbox" id="toggleSailing" />
-                        <label for="toggleSailing">Enable Sailing</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skills-grid" id="skillsGrid">
-                <!-- Skills will be generated by JavaScript -->
-            </div>
-
-            <div class="results" id="results">
-                <h2>Overall True Efficiency</h2>
-                <div class="overall-efficiency" id="overallEfficiency">0.0%</div>
-                <p>Based on your total experience gained vs optimal rates</p>
-            </div>
-        </div>
-
-        <div class="eph-reference">
-            <h2>📊 EPH Reference Values</h2>
-            <p>Experience per hour rates used for calculations</p>
-            <div class="eph-grid" id="ephGrid">
-                <!-- EPH values will be generated by JavaScript -->
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>EPH values are placeholders and can be edited. Client side only.</p>
+<div class="container">
+    <div class="header">
+        <div class="header-bg" aria-hidden="true"></div>
+        <div class="header-content">
+            <h1>🏆 OSRS True Efficiency Calculator</h1>
         </div>
     </div>
 
-    <script>
-        // Base skills
-        const skillsBase = {
-            'Attack': { eph: 65000, color: '#CD853F', method: 'Dharoks NMZ' },
-            'Strength': { eph: 65000, color: '#228B22', method: 'Dharoks NMZ' },
-            'Defence': { eph: 65000, color: '#4682B4', method: 'Dharoks NMZ' },
-            'Ranged': { eph: 400000, color: '#9ACD32', method: 'Chinning MM2' },
-            'Prayer': { eph: 600000, color: '#FFD700', method: 'D bones gilded altar' },
-            'Magic': { eph: 300000, color: '#8A2BE2', method: 'Bursting MM2' },
-            'Runecrafting': { eph: 65000, color: '#DAA520', method: 'Lavas with runners' },
-            'Construction': { eph: 900000, color: '#8B4513', method: 'Mahogany tables' },
-            'Hitpoints': { eph: 18000, color: '#DC143C', method: 'From combat training' },
-            'Agility': { eph: 62000, color: '#00CED1', method: 'Hallowed Sepulchre' },
-            'Herblore': { eph: 450000, color: '#32CD32', method: 'Efficient potions' },
-            'Thieving': { eph: 280000, color: '#800080', method: 'Blackjacking/PP' },
-            'Crafting': { eph: 430000, color: '#DEB887', method: 'Superglass make' },
-            'Fletching': { eph: 950000, color: '#00FF7F', method: 'Darts' },
-            'Slayer': { eph: 38000, color: '#000000', method: 'Efficient slayer' },
-            'Hunter': { eph: 170000, color: '#8B4513', method: 'Red/Black chins' },
-            'Mining': { eph: 95000, color: '#696969', method: '3t4g granite' },
-            'Smithing': { eph: 380000, color: '#B22222', method: 'BF gold bars' },
-            'Fishing': { eph: 110000, color: '#4169E1', method: '3t barbarian' },
-            'Cooking': { eph: 500000, color: '#FF6347', method: 'Wines' },
-            'Firemaking': { eph: 450000, color: '#FF4500', method: 'Redwood logs' },
-            'Woodcutting': { eph: 150000, color: '#228B22', method: '3t teaks' },
-            'Farming': { eph: 550000, color: '#9ACD32', method: 'Tree runs (avg)' }
-        };
+    <div class="main-content">
+        <div class="time-input">
+            <h3>⏰ Total Time Played</h3>
+            <div class="time-controls">
+                <div class="time-group">
+                    <label>Hours</label>
+                    <input type="number" id="hours" value="0" min="0" oninput="updateCalculations()">
+                </div>
+                <div class="time-group">
+                    <label>Minutes</label>
+                    <input type="number" id="minutes" value="0" min="0" max="59" oninput="updateCalculations()">
+                </div>
+                <div class="time-group">
+                    <label>Seconds</label>
+                    <input type="number" id="seconds" value="0" min="0" max="59" oninput="updateCalculations()">
+                </div>
+            </div>
+        </div>
 
-        // Sailing definition, added only if toggled
-        const sailingSkill = { 'Sailing': { eph: 1, color: '#1E90FF', method: 'Placeholder' } };
+        <div class="highscores-fetch">
+            <h3>📊 Fetch Stats from Highscores</h3>
+            <div class="fetch-controls">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Enter OSRS username to auto-fill XP values">
+                </div>
+                <button id="fetchButton" onclick="fetchHighscores()">Fetch Stats</button>
+                <div id="fetchStatus" class="fetch-status"></div>
+                <div class="toggle-row">
+                    <input type="checkbox" id="toggleSailing" />
+                    <label for="toggleSailing">Enable Sailing (adds skill at 1 EPH)</label>
+                </div>
+            </div>
+        </div>
 
-        // Highscores order
-        const highscoreSkillOrder = [
-            'Overall','Attack','Defence','Strength','Hitpoints','Ranged','Prayer','Magic',
-            'Cooking','Woodcutting','Fletching','Fishing','Firemaking','Crafting','Smithing',
-            'Mining','Herblore','Agility','Thieving','Slayer','Farming','Runecrafting','Hunter','Construction'
-        ];
+        <div class="skills-grid" id="skillsGrid">
+            <!-- Skills built by JS -->
+        </div>
 
-        // Helper: get active skills based on toggle
-        function getSkills() {
-            const includeSailing = document.getElementById('toggleSailing')?.checked;
-            return includeSailing ? { ...skillsBase, ...sailingSkill } : { ...skillsBase };
-        }
+        <!-- CML panel restored -->
+        <div class="cml-panel" id="cmlPanel">
+            <h3>📈 CML Stats</h3>
+            <div class="cml-row">
+                <div class="cml-stat">
+                    <span class="label">EHP</span>
+                    <span class="value" id="cmlEhp">—</span>
+                </div>
+                <div class="cml-stat">
+                    <span class="label">EHB</span>
+                    <span class="value" id="cmlEhb">—</span>
+                </div>
+                <div class="cml-stat">
+                    <span class="label">Note</span>
+                    <span class="value" id="cmlNote">Idle</span>
+                </div>
+            </div>
+            <div id="cmlStatus" class="fetch-status"></div>
+            <pre id="cmlRaw" style="display:none; max-height:160px; overflow:auto; background:#fff; border:1px solid #f6e3a1; padding:8px; border-radius:8px;"></pre>
+        </div>
 
-        // Robust fetch helpers and fallbacks
-        const HS_ENDPOINTS = {
-            lite: [
-                u => `https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${u}`,
-                u => `https://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${u}`
-            ],
-            html: [
-                u => `https://secure.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1=${u}`,
-                u => `https://services.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1=${u}`
-            ]
-        };
-        function proxyUrls(url) {
-            const bust = `&t=${Date.now()}`;
-            return [
-                `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}${bust}`,
-                `https://cors.isomorphic-git.org/${url}`
-            ];
-        }
-        async function fetchTextThroughProxies(url) {
-            const proxies = proxyUrls(url);
-            let lastError = null;
-            for (const p of proxies) {
-                try {
-                    const resp = await fetch(p, { mode: 'cors', cache: 'no-store', redirect: 'follow', referrerPolicy: 'no-referrer' });
-                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-                    const text = await resp.text();
-                    if (!text || text.trim().length === 0) throw new Error('Empty response');
-                    return text;
-                } catch (e) { lastError = e; }
-            }
-            throw lastError || new Error('All proxies failed');
-        }
-        async function tryLite(username, setStatus) {
-            const ue = encodeURIComponent(username);
-            for (const build of HS_ENDPOINTS.lite) {
-                const target = build(ue);
-                setStatus(`Trying Lite API via ${new URL(target).host}...`);
-                try {
-                    const text = await fetchTextThroughProxies(target);
-                    const skillsLoaded = parseCSVData(text);
-                    if (skillsLoaded > 0) return skillsLoaded;
-                } catch (e) {}
-            }
-            throw new Error('Lite API attempts failed');
-        }
-        async function tryHTML(username, setStatus) {
-            const ue = encodeURIComponent(username);
-            for (const build of HS_ENDPOINTS.html) {
-                const target = build(ue);
-                setStatus(`Trying web page via ${new URL(target).host}...`);
-                try {
-                    const html = await fetchTextThroughProxies(target);
-                    const skillsLoaded = scrapeHTMLData(html);
-                    if (skillsLoaded > 0) return skillsLoaded;
-                } catch (e) {}
-            }
-            throw new Error('HTML scrape attempts failed');
-        }
-        async function fetchHighscores() {
-            const username = document.getElementById('username').value.trim();
-            const fetchButton = document.getElementById('fetchButton');
-            const fetchStatus = document.getElementById('fetchStatus');
-            const setStatus = (msg, cls) => {
-                fetchStatus.textContent = msg;
-                fetchStatus.className = 'fetch-status' + (cls ? ' ' + cls : '');
-            };
-            if (!username) { setStatus('Please enter a username', 'error'); return; }
-            fetchButton.disabled = true;
-            setStatus('Fetching stats...', 'loading');
-            try {
-                try {
-                    const loaded = await tryLite(username, setStatus);
-                    setStatus(`✅ Loaded ${loaded} skills for ${username}`, 'success');
-                    updateCalculations();
-                    fetchButton.disabled = false;
-                    return;
-                } catch (_) {}
-                const loaded = await tryHTML(username, setStatus);
-                setStatus(`✅ Loaded ${loaded} skills for ${username}`, 'success');
-                updateCalculations();
-            } catch (error) {
-                let msg = 'Unable to fetch stats from OSRS servers';
-                const lower = String(error && error.message || '').toLowerCase();
-                if (lower.includes('player not found') || lower.includes('private') || lower.includes('404')) {
-                    msg = 'Player not found or profile is private';
-                }
-                setStatus(`❌ ${msg}`, 'error');
-            } finally { fetchButton.disabled = false; }
-        }
+        <div class="results" id="results">
+            <h2>Overall True Efficiency</h2>
+            <div class="overall-efficiency" id="overallEfficiency">0.0%</div>
+            <p>Based on your total experience gained vs optimal rates</p>
+        </div>
+    </div>
 
-        function parseCSVData(data) {
-            if (!data || !data.includes(',')) throw new Error('Player not found or profile is private');
-            const lines = data.trim().split('\n');
-            if (lines.length < 24) throw new Error('Insufficient data');
-            let skillsLoaded = 0;
-            for (let j = 1; j < Math.min(lines.length, highscoreSkillOrder.length); j++) {
-                const skillName = highscoreSkillOrder[j];
-                const parts = lines[j].split(',');
-                if (parts.length >= 3 && getSkills()[skillName]) {
-                    const experience = parseInt(parts[2]);
-                    if (!isNaN(experience) && experience >= 0) {
-                        const inputElement = document.getElementById(`${skillName.toLowerCase()}-current`);
-                        if (inputElement) { inputElement.value = Math.max(0, experience); skillsLoaded++; }
-                    }
-                }
-            }
-            return skillsLoaded;
+    <div class="eph-reference">
+        <h2>📊 EPH Reference Values</h2>
+        <p>Experience per hour rates used for calculations</p>
+        <div class="eph-grid" id="ephGrid"></div>
+    </div>
+
+    <div class="footer">
+        <p>EPH values are placeholders and can be edited. Client side only.</p>
+    </div>
+</div>
+
+<script>
+/* ------------ Data ------------- */
+const skillsBase = {
+    'Attack': { eph: 65000, color: '#CD853F', method: 'Dharoks NMZ' },
+    'Strength': { eph: 65000, color: '#228B22', method: 'Dharoks NMZ' },
+    'Defence': { eph: 65000, color: '#4682B4', method: 'Dharoks NMZ' },
+    'Ranged': { eph: 400000, color: '#9ACD32', method: 'Chinning MM2' },
+    'Prayer': { eph: 600000, color: '#FFD700', method: 'D bones gilded altar' },
+    'Magic': { eph: 300000, color: '#8A2BE2', method: 'Bursting MM2' },
+    'Runecrafting': { eph: 65000, color: '#DAA520', method: 'Lavas with runners' },
+    'Construction': { eph: 900000, color: '#8B4513', method: 'Mahogany tables' },
+    'Hitpoints': { eph: 18000, color: '#DC143C', method: 'From combat training' },
+    'Agility': { eph: 62000, color: '#00CED1', method: 'Hallowed Sepulchre' },
+    'Herblore': { eph: 450000, color: '#32CD32', method: 'Efficient potions' },
+    'Thieving': { eph: 280000, color: '#800080', method: 'Blackjacking/PP' },
+    'Crafting': { eph: 430000, color: '#DEB887', method: 'Superglass make' },
+    'Fletching': { eph: 950000, color: '#00FF7F', method: 'Darts' },
+    'Slayer': { eph: 38000, color: '#000000', method: 'Efficient slayer' },
+    'Hunter': { eph: 170000, color: '#8B4513', method: 'Red/Black chins' },
+    'Mining': { eph: 95000, color: '#696969', method: '3t4g granite' },
+    'Smithing': { eph: 380000, color: '#B22222', method: 'BF gold bars' },
+    'Fishing': { eph: 110000, color: '#4169E1', method: '3t barbarian' },
+    'Cooking': { eph: 500000, color: '#FF6347', method: 'Wines' },
+    'Firemaking': { eph: 450000, color: '#FF4500', method: 'Redwood logs' },
+    'Woodcutting': { eph: 150000, color: '#228B22', method: '3t teaks' },
+    'Farming': { eph: 550000, color: '#9ACD32', method: 'Tree runs (avg)' }
+};
+const sailingSkill = { 'Sailing': { eph: 1, color: '#1E90FF', method: 'Placeholder' } };
+
+const highscoreSkillOrder = [
+    'Overall','Attack','Defence','Strength','Hitpoints','Ranged','Prayer','Magic',
+    'Cooking','Woodcutting','Fletching','Fishing','Firemaking','Crafting','Smithing',
+    'Mining','Herblore','Agility','Thieving','Slayer','Farming','Runecrafting','Hunter','Construction'
+];
+
+/* ------------ Helpers ------------- */
+function getSkills() {
+    const includeSailing = document.getElementById('toggleSailing')?.checked;
+    return includeSailing ? { ...skillsBase, ...sailingSkill } : { ...skillsBase };
+}
+function proxyUrls(url) {
+    const bust = (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+    return [
+        'https://api.allorigins.win/raw?url=' + encodeURIComponent(url + bust),
+        'https://cors.isomorphic-git.org/' + url
+    ];
+}
+async function fetchTextThroughProxies(url) {
+    const proxies = proxyUrls(url);
+    let lastError = null;
+    for (const p of proxies) {
+        try {
+            const resp = await fetch(p, { mode: 'cors', cache: 'no-store', redirect: 'follow', referrerPolicy: 'no-referrer' });
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            const text = await resp.text();
+            if (!text || text.trim().length === 0) throw new Error('Empty response');
+            return text;
+        } catch (e) { lastError = e; }
+    }
+    throw lastError || new Error('All proxies failed');
+}
+
+/* ------------ OSRS highscores ------------- */
+const HS_ENDPOINTS = {
+    lite: [
+        u => `https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${u}`,
+        u => `https://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=${u}`
+    ],
+    html: [
+        u => `https://secure.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1=${u}`,
+        u => `https://services.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1=${u}`
+    ]
+};
+async function tryLite(username, setStatus) {
+    const ue = encodeURIComponent(username);
+    for (const build of HS_ENDPOINTS.lite) {
+        const target = build(ue);
+        setStatus('Trying Lite API via ' + new URL(target).host + '...', 'loading');
+        try {
+            const text = await fetchTextThroughProxies(target);
+            const skillsLoaded = parseCSVData(text);
+            if (skillsLoaded > 0) return skillsLoaded;
+        } catch (e) {}
+    }
+    throw new Error('Lite API attempts failed');
+}
+async function tryHTML(username, setStatus) {
+    const ue = encodeURIComponent(username);
+    for (const build of HS_ENDPOINTS.html) {
+        const target = build(ue);
+        setStatus('Trying web page via ' + new URL(target).host + '...', 'loading');
+        try {
+            const html = await fetchTextThroughProxies(target);
+            const skillsLoaded = scrapeHTMLData(html);
+            if (skillsLoaded > 0) return skillsLoaded;
+        } catch (e) {}
+    }
+    throw new Error('HTML scrape attempts failed');
+}
+async function fetchHighscores() {
+    const username = document.getElementById('username').value.trim();
+    const fetchButton = document.getElementById('fetchButton');
+    const fetchStatus = document.getElementById('fetchStatus');
+    const setStatus = (msg, cls) => { fetchStatus.textContent = msg; fetchStatus.className = 'fetch-status' + (cls ? ' ' + cls : ''); };
+
+    if (!username) { setStatus('Please enter a username', 'error'); return; }
+    fetchButton.disabled = true; setStatus('Fetching stats...', 'loading');
+
+    try {
+        try {
+            const loaded = await tryLite(username, setStatus);
+            setStatus('Loaded ' + loaded + ' skills for ' + username, 'success');
+        } catch (_) {
+            const loaded = await tryHTML(username, setStatus);
+            setStatus('Loaded ' + loaded + ' skills for ' + username, 'success');
         }
-        function scrapeHTMLData(html) {
-            if (!html || html.includes('Player not found') || html.includes('404')) {
-                throw new Error('Player not found or profile is private');
+        updateCalculations();
+    } catch (error) {
+        let msg = 'Unable to fetch stats from OSRS servers';
+        const lower = String(error && error.message || '').toLowerCase();
+        if (lower.includes('player not found') || lower.includes('private') || lower.includes('404')) {
+            msg = 'Player not found or profile is private';
+        }
+        setStatus(msg, 'error');
+    } finally {
+        fetchButton.disabled = false;
+        // Always fetch CML after highscores attempt
+        fetchCMLStats();
+    }
+}
+function parseCSVData(data) {
+    if (!data || !data.includes(',')) throw new Error('Player not found or profile is private');
+    const lines = data.trim().split('\n');
+    if (lines.length < 24) throw new Error('Insufficient data');
+    let skillsLoaded = 0;
+    for (let j = 1; j < Math.min(lines.length, highscoreSkillOrder.length); j++) {
+        const skillName = highscoreSkillOrder[j];
+        const parts = lines[j].split(',');
+        if (parts.length >= 3 && getSkills()[skillName]) {
+            const experience = parseInt(parts[2]);
+            if (!isNaN(experience) && experience >= 0) {
+                const inputElement = document.getElementById(`${skillName.toLowerCase()}-current`);
+                if (inputElement) { inputElement.value = Math.max(0, experience); skillsLoaded++; }
             }
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const tables = doc.querySelectorAll('table');
-            let skillsLoaded = 0;
-            let statsTable = null;
-            for (const table of tables) {
-                const rows = table.querySelectorAll('tr');
-                if (rows.length >= 20) { statsTable = table; break; }
+        }
+    }
+    return skillsLoaded;
+}
+function scrapeHTMLData(html) {
+    if (!html || html.includes('Player not found') || html.includes('404')) {
+        throw new Error('Player not found or profile is private');
+    }
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const tables = doc.querySelectorAll('table');
+    let skillsLoaded = 0;
+    let statsTable = null;
+    for (const table of tables) {
+        const rows = table.querySelectorAll('tr');
+        if (rows.length >= 20) { statsTable = table; break; }
+    }
+    if (!statsTable) {
+        for (const table of tables) {
+            const tableText = table.textContent.toLowerCase();
+            if (tableText.includes('attack') && tableText.includes('defence') && tableText.includes('strength')) {
+                statsTable = table; break;
             }
-            if (!statsTable) {
-                for (const table of tables) {
-                    const tableText = table.textContent.toLowerCase();
-                    if (tableText.includes('attack') && tableText.includes('defence') && tableText.includes('strength')) {
-                        statsTable = table; break;
-                    }
-                }
-            }
-            if (statsTable) {
-                const rows = statsTable.querySelectorAll('tr');
-                for (const row of rows) {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 4) {
-                        let skillName = '';
-                        let experience = 0;
-                        for (let i = 0; i < Math.min(3, cells.length); i++) {
-                            const cellText = cells[i].textContent.trim();
-                            for (const [skill] of Object.entries(getSkills())) {
-                                if (cellText.toLowerCase() === skill.toLowerCase()) {
-                                    skillName = skill;
-                                    const expText = cells[cells.length - 1].textContent.trim().replace(/,/g, '');
-                                    experience = parseInt(expText);
-                                    break;
-                                }
-                            }
-                            if (skillName) break;
+        }
+    }
+    if (statsTable) {
+        const rows = statsTable.querySelectorAll('tr');
+        for (const row of rows) {
+            const cells = row.querySelectorAll('td');
+            if (cells.length >= 4) {
+                let skillName = '';
+                let experience = 0;
+                for (let i = 0; i < Math.min(3, cells.length); i++) {
+                    const cellText = cells[i].textContent.trim();
+                    for (const [skill] of Object.entries(getSkills())) {
+                        if (cellText.toLowerCase() === skill.toLowerCase()) {
+                            skillName = skill;
+                            const expText = cells[cells.length - 1].textContent.trim().replace(/,/g, '');
+                            experience = parseInt(expText);
+                            break;
                         }
-                        if (skillName && !isNaN(experience) && experience >= 0) {
-                            const inputElement = document.getElementById(`${skillName.toLowerCase()}-current`);
-                            if (inputElement) { inputElement.value = Math.max(0, experience); skillsLoaded++; }
-                        }
                     }
+                    if (skillName) break;
+                }
+                if (skillName && !isNaN(experience) && experience >= 0) {
+                    const inputElement = document.getElementById(`${skillName.toLowerCase()}-current`);
+                    if (inputElement) { inputElement.value = Math.max(0, experience); skillsLoaded++; }
                 }
             }
-            return skillsLoaded;
+        }
+    }
+    return skillsLoaded;
+}
+
+/* ------------ CML ------------- */
+const CML_ENDPOINTS = {
+    stats: u => `https://crystalmathlabs.com/tracker/api.php?type=stats&player=${u}`
+};
+async function fetchCMLStats() {
+    const name = document.getElementById('username').value.trim();
+    const cmlStatus = document.getElementById('cmlStatus');
+    const cmlNote = document.getElementById('cmlNote');
+    const cmlRaw = document.getElementById('cmlRaw');
+
+    if (!name) {
+        cmlStatus.textContent = 'Enter a username to query CML';
+        cmlStatus.className = 'fetch-status';
+        document.getElementById('cmlEhp').textContent = '—';
+        document.getElementById('cmlEhb').textContent = '—';
+        cmlNote.textContent = 'Idle';
+        cmlRaw.style.display = 'none';
+        cmlRaw.textContent = '';
+        return;
+    }
+
+    cmlStatus.textContent = 'Contacting CML...';
+    cmlStatus.className = 'fetch-status loading';
+    cmlNote.textContent = 'Querying';
+    cmlRaw.style.display = 'none';
+    cmlRaw.textContent = '';
+
+    const ue = encodeURIComponent(name);
+    const url = CML_ENDPOINTS.stats(ue);
+
+    try {
+        const text = await fetchTextThroughProxies(url);
+        const parsed = parseCMLResponse(text);
+
+        if (parsed.ehp != null) document.getElementById('cmlEhp').textContent = Number(parsed.ehp).toFixed(2);
+        else document.getElementById('cmlEhp').textContent = '—';
+
+        if (parsed.ehb != null) document.getElementById('cmlEhb').textContent = Number(parsed.ehb).toFixed(2);
+        else document.getElementById('cmlEhb').textContent = '—';
+
+        cmlStatus.textContent = 'CML loaded for "' + name + '"';
+        cmlStatus.className = 'fetch-status success';
+
+        if (!parsed.ehp && !parsed.ehb) {
+            cmlNote.textContent = 'Showing raw reply';
+            cmlRaw.style.display = 'block';
+            cmlRaw.textContent = text.slice(0, 4000);
+        } else {
+            cmlNote.textContent = 'OK';
+        }
+    } catch (e) {
+        cmlStatus.textContent = 'Could not load from CML';
+        cmlStatus.className = 'fetch-status error';
+        cmlNote.textContent = 'Error';
+    }
+}
+function parseCMLResponse(text) {
+    // Try JSON first
+    try {
+        const obj = JSON.parse(text);
+        const ehp = obj.ehp ?? obj.EHP ?? obj.stats?.ehp;
+        const ehb = obj.ehb ?? obj.EHB ?? obj.stats?.ehb;
+        if (ehp != null || ehb != null) return { ehp, ehb };
+    } catch(_) {}
+
+    // Try labeled lines, like "EHP: 123.45"
+    let m = text.match(/EHP\s*[:=]\s*([0-9]+(?:\.[0-9]+)?)/i);
+    let ehp = m ? parseFloat(m[1]) : null;
+
+    m = text.match(/EHB\s*[:=]\s*([0-9]+(?:\.[0-9]+)?)/i);
+    let ehb = m ? parseFloat(m[1]) : null;
+
+    // Try CSV "...,ehp,ehb,..." where header may appear
+    if (ehp == null) {
+        const lines = text.trim().split(/\r?\n/);
+        if (lines.length >= 2 && /ehp/i.test(lines[0])) {
+            const header = lines[0].split(/[,;\t]/).map(s => s.trim().toLowerCase());
+            const values = lines[1].split(/[,;\t]/).map(s => s.trim());
+            const eIdx = header.indexOf('ehp');
+            const bIdx = header.indexOf('ehb');
+            if (eIdx >= 0 && values[eIdx] != null && values[eIdx] !== '') ehp = parseFloat(values[eIdx]);
+            if (bIdx >= 0 && values[bIdx] != null && values[bIdx] !== '') ehb = parseFloat(values[bIdx]);
+        }
+    }
+    return { ehp, ehb };
+}
+
+/* ------------ Calculations ------------- */
+function getTotalHours() {
+    const hours = parseInt(document.getElementById('hours').value) || 0;
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+    return hours + minutes / 60 + seconds / 3600;
+}
+function getEfficiencyClass(eff) {
+    if (eff >= 90) return 'efficiency-excellent';
+    if (eff >= 75) return 'efficiency-good';
+    if (eff >= 50) return 'efficiency-average';
+    if (eff >= 25) return 'efficiency-poor';
+    return 'efficiency-very-poor';
+}
+function formatEfficiency(eff) {
+    if (eff > 100) return 'Lots';
+    return eff.toFixed(1) + '%';
+}
+function updateCalculations() {
+    const totalHours = getTotalHours();
+    const active = getSkills();
+
+    if (totalHours === 0) {
+        for (const skillName of Object.keys(active)) {
+            const el = document.getElementById(`${skillName.toLowerCase()}-efficiency`);
+            if (el) { el.textContent = '0.0%'; el.className = 'efficiency-value'; }
+        }
+        const oe = document.getElementById('overallEfficiency');
+        oe.textContent = '0.0%';
+        oe.className = 'overall-efficiency';
+        return;
+    }
+
+    let totalExpGained = 0;
+    let totalOptimalExp = 0;
+
+    for (const [skillName, skillData] of Object.entries(active)) {
+        const currentExp = parseInt(document.getElementById(`${skillName.toLowerCase()}-current`)?.value) || 0;
+        const expGained = currentExp;
+        const optimalExp = skillData.eph * totalHours;
+
+        let efficiency = 0;
+        if (optimalExp > 0 && expGained > 0) {
+            efficiency = (expGained / optimalExp) * 100;
+            totalExpGained += expGained;
+            totalOptimalExp += optimalExp;
         }
 
-        // Build or rebuild the UI grids. Preserves typed values when possible.
-        function buildSkillsUI() {
-            const skillsGrid = document.getElementById('skillsGrid');
-            const ephGrid = document.getElementById('ephGrid');
-            const active = getSkills();
-
-            // Save current values
-            const currentValues = {};
-            document.querySelectorAll('.skill-inputs input[id$="-current"]').forEach(inp => {
-                currentValues[inp.id] = inp.value;
-            });
-
-            // Clear
-            skillsGrid.innerHTML = '';
-            ephGrid.innerHTML = '';
-
-            // Build cards and EPH items
-            for (const [skillName, skillData] of Object.entries(active)) {
-                // Card
-                const skillCard = document.createElement('div');
-                skillCard.className = 'skill-card';
-                skillCard.innerHTML = `
-                    <div class="skill-header">
-                        <div class="skill-name" style="color: ${skillData.color}">${skillName}</div>
-                        <div class="eph-display">${skillData.eph.toLocaleString()} EPH</div>
-                    </div>
-                    <div class="skill-inputs">
-                        <div class="input-group">
-                            <label>Current XP</label>
-                            <input type="number" id="${skillName.toLowerCase()}-current" value="0" min="0" oninput="updateCalculations()">
-                        </div>
-                    </div>
-                    <div class="efficiency-display">
-                        <div class="efficiency-value" id="${skillName.toLowerCase()}-efficiency">0.0%</div>
-                        <div class="efficiency-label">True Efficiency</div>
-                    </div>
-                `;
-                skillsGrid.appendChild(skillCard);
-
-                // Restore value if present
-                const inputElement = skillCard.querySelector(`#${skillName.toLowerCase()}-current`);
-                if (currentValues[inputElement.id] !== undefined) {
-                    inputElement.value = currentValues[inputElement.id];
-                }
-
-                // EPH reference
-                const ephItem = document.createElement('div');
-                ephItem.className = 'eph-item';
-                ephItem.style.borderLeftColor = skillData.color;
-                ephItem.innerHTML = `
-                    <div class="eph-skill" style="color: ${skillData.color}">${skillName}</div>
-                    <div class="eph-details">
-                        <div class="eph-rate">${skillData.eph.toLocaleString()}/hr</div>
-                        <div class="eph-method">${skillData.method}</div>
-                    </div>
-                `;
-                ephGrid.appendChild(ephItem);
-            }
-
-            updateCalculations();
+        const el = document.getElementById(`${skillName.toLowerCase()}-efficiency`);
+        if (el) {
+            el.textContent = formatEfficiency(efficiency);
+            el.className = 'efficiency-value ' + getEfficiencyClass(Math.min(efficiency, 100));
         }
+    }
 
-        function getTotalHours() {
-            const days = parseInt(document.getElementById('days').value) || 0;
-            const hours = parseInt(document.getElementById('hours').value) || 0;
-            const minutes = parseInt(document.getElementById('minutes').value) || 0;
-            return days * 24 + hours + minutes / 60;
+    let overallEfficiency = 0;
+    if (totalOptimalExp > 0) overallEfficiency = (totalExpGained / totalOptimalExp) * 100;
+
+    const overallEl = document.getElementById('overallEfficiency');
+    overallEl.textContent = formatEfficiency(overallEfficiency);
+    overallEl.className = 'overall-efficiency ' + getEfficiencyClass(Math.min(overallEfficiency, 100));
+}
+
+/* ------------ UI build ------------- */
+function buildSkillsUI() {
+    const skillsGrid = document.getElementById('skillsGrid');
+    const ephGrid = document.getElementById('ephGrid');
+    const active = getSkills();
+
+    // Preserve user-entered values
+    const currentValues = {};
+    document.querySelectorAll('.skill-inputs input[id$="-current"]').forEach(inp => currentValues[inp.id] = inp.value);
+
+    skillsGrid.innerHTML = '';
+    ephGrid.innerHTML = '';
+
+    for (const [skillName, skillData] of Object.entries(active)) {
+        const skillCard = document.createElement('div');
+        skillCard.className = 'skill-card';
+        skillCard.innerHTML = `
+            <div class="skill-header">
+                <div class="skill-name" style="color: ${skillData.color}">${skillName}</div>
+                <div class="eph-display">${skillData.eph.toLocaleString()} EPH</div>
+            </div>
+            <div class="skill-inputs">
+                <div class="input-group">
+                    <label>Current XP</label>
+                    <input type="number" id="${skillName.toLowerCase()}-current" value="0" min="0" oninput="updateCalculations()">
+                </div>
+            </div>
+            <div class="efficiency-display">
+                <div class="efficiency-value" id="${skillName.toLowerCase()}-efficiency">0.0%</div>
+                <div class="efficiency-label">True Efficiency</div>
+            </div>
+        `;
+        skillsGrid.appendChild(skillCard);
+
+        const inputElement = skillCard.querySelector(`#${skillName.toLowerCase()}-current`);
+        if (currentValues[inputElement.id] !== undefined) inputElement.value = currentValues[inputElement.id];
+
+        const ephItem = document.createElement('div');
+        ephItem.className = 'eph-item';
+        ephItem.style.borderLeftColor = skillData.color;
+        ephItem.innerHTML = `
+            <div class="eph-skill" style="color: ${skillData.color}">${skillName}</div>
+            <div class="eph-details">
+                <div class="eph-rate">${skillData.eph.toLocaleString()}/hr</div>
+                <div class="eph-method">${skillData.method}</div>
+            </div>
+        `;
+        ephGrid.appendChild(ephItem);
+    }
+
+    updateCalculations();
+}
+
+/* ------------ Init ------------- */
+window.addEventListener('load', function() {
+    buildSkillsUI();
+    document.getElementById('toggleSailing').addEventListener('change', buildSkillsUI);
+
+    document.getElementById('username').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') fetchHighscores();
+    });
+
+    // Header bg hue animation
+    const HUE_SCROLL_SPEED = 25;
+    const IDLE_BRIGHTNESS = 1.20;
+    const HOVER_BRIGHTNESS = 0.70;
+    const BRIGHTNESS_LERP = 0.002;
+
+    const headerBG = document.querySelector('.header-bg');
+    const headerEl = document.querySelector('.header');
+    if (headerBG && headerEl) {
+        let hue = 0;
+        let last = performance.now();
+        let currentBrightness = IDLE_BRIGHTNESS;
+        let targetBrightness = IDLE_BRIGHTNESS;
+
+        function tick(now) {
+            const dt = (now - last) / 1000;
+            last = now;
+            hue = (hue + HUE_SCROLL_SPEED * dt) % 360;
+            currentBrightness += (targetBrightness - currentBrightness) * BRIGHTNESS_LERP;
+            headerBG.style.filter = `hue-rotate(${hue}deg) brightness(${currentBrightness})`;
+            requestAnimationFrame(tick);
         }
-        function getEfficiencyClass(eff) {
-            if (eff >= 90) return 'efficiency-excellent';
-            if (eff >= 75) return 'efficiency-good';
-            if (eff >= 50) return 'efficiency-average';
-            if (eff >= 25) return 'efficiency-poor';
-            return 'efficiency-very-poor';
-        }
-        function formatEfficiency(eff) {
-            if (eff > 100) return 'Lots';
-            return eff.toFixed(1) + '%';
-        }
-        function updateCalculations() {
-            const totalHours = getTotalHours();
-            const active = getSkills();
-
-            if (totalHours === 0) {
-                for (const skillName of Object.keys(active)) {
-                    const el = document.getElementById(`${skillName.toLowerCase()}-efficiency`);
-                    if (el) { el.textContent = '0.0%'; el.className = 'efficiency-value'; }
-                }
-                const oe = document.getElementById('overallEfficiency');
-                oe.textContent = '0.0%';
-                oe.className = 'overall-efficiency';
-                return;
-            }
-
-            let totalExpGained = 0;
-            let totalOptimalExp = 0;
-
-            for (const [skillName, skillData] of Object.entries(active)) {
-                const currentExp = parseInt(document.getElementById(`${skillName.toLowerCase()}-current`)?.value) || 0;
-                const expGained = currentExp;
-                const optimalExp = skillData.eph * totalHours;
-
-                let efficiency = 0;
-                if (optimalExp > 0 && expGained > 0) {
-                    efficiency = (expGained / optimalExp) * 100;
-                    totalExpGained += expGained;
-                    totalOptimalExp += optimalExp;
-                }
-
-                const el = document.getElementById(`${skillName.toLowerCase()}-efficiency`);
-                if (el) {
-                    el.textContent = formatEfficiency(efficiency);
-                    el.className = 'efficiency-value ' + getEfficiencyClass(Math.min(efficiency, 100));
-                }
-            }
-
-            let overallEfficiency = 0;
-            if (totalOptimalExp > 0) overallEfficiency = (totalExpGained / totalOptimalExp) * 100;
-
-            const overallEl = document.getElementById('overallEfficiency');
-            overallEl.textContent = formatEfficiency(overallEfficiency);
-            overallEl.className = 'overall-efficiency ' + getEfficiencyClass(Math.min(overallEfficiency, 100));
-        }
-
-        // Init
-        window.addEventListener('load', function() {
-            // Build UI once and wire toggle
-            buildSkillsUI();
-            document.getElementById('toggleSailing').addEventListener('change', buildSkillsUI)
-
-
-            // Enter key support
-            document.getElementById('username').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') fetchHighscores();
-            });
-
-            // Animated hue + hover brightness for the green header background only
-            const HUE_SCROLL_SPEED   = 25;   // degrees per second
-            const IDLE_BRIGHTNESS    = 1.20; // brightness when not hovering
-            const HOVER_BRIGHTNESS   = 0.70; // brightness on hover
-            const BRIGHTNESS_LERP    = 0.008; // fade speed toward target
-
-            const headerBG = document.querySelector('.header-bg');
-            const headerTitle = document.querySelector('.header h1');
-            if (headerTitle) {
-                headerTitle.style.filter = `brightness(${IDLE_BRIGHTNESS})`;
-            }
-
-            if (headerBG) {
-                let hue = 0;
-                let last = performance.now();
-                let currentBrightness = IDLE_BRIGHTNESS;
-                let targetBrightness  = IDLE_BRIGHTNESS;
-
-                function tick(now) {
-                    const dt = (now - last) / 1000;
-                    last = now;
-
-                    hue = (hue + HUE_SCROLL_SPEED * dt) % 360;
-                    currentBrightness += (targetBrightness - currentBrightness) * BRIGHTNESS_LERP;
-
-                    headerBG.style.filter = `hue-rotate(${hue}deg) brightness(${currentBrightness})`;
-                    requestAnimationFrame(tick);
-                }
-
-                const headerEl = document.querySelector('.header');
-                headerEl.addEventListener('mouseenter', () => { targetBrightness = HOVER_BRIGHTNESS; });
-                headerEl.addEventListener('mouseleave', () => { targetBrightness = IDLE_BRIGHTNESS; });
-
-                requestAnimationFrame(tick);
-            }
-        });
-    </script>
+        headerEl.addEventListener('mouseenter', () => { targetBrightness = HOVER_BRIGHTNESS; });
+        headerEl.addEventListener('mouseleave', () => { targetBrightness = IDLE_BRIGHTNESS; });
+        requestAnimationFrame(tick);
+    }
+});
+</script>
 </body>
 </html>
